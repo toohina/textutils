@@ -1,12 +1,12 @@
 import './App.css';
 import Navbar from './components/Navbar';
-import TextArea from './components/TextArea';
+import TextForm from './components/TextForm';
 
 function App() {
   return (
     <>
       <Navbar/>
-      <TextArea/>
+      <TextForm/>
     </>
   );
 }
