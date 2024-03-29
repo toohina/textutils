@@ -2,6 +2,15 @@ import React, {useState} from 'react'
 
 export default function(){
 
+    const getWordCount=()=>{
+        let count=0;
+        const textarr=text.split(" ")
+        textarr.forEach(element => {
+            if(element!=="")count++;
+        });
+        return count;
+    }
+
     const getSelectedText=()=>{
         if(window.getSelection().toString().length){
             let exactText = window.getSelection().toString();
@@ -28,9 +37,10 @@ export default function(){
         setText(event.target.value);
     }
 
-    const [text,setText]=useState("Enter your text here")
+    const [text,setText]=useState("")
 
     return (
+        <>
         <div className="container mt-5">
             <h3>Enter Text Below</h3>
             <div className="mb-3">
@@ -38,6 +48,18 @@ export default function(){
             </div> 
             <button className="btn btn-primary" onClick={handleOnClick}>Convert text to uppercase</button>    
         </div>
-      
+
+        <div className='container mt-5'>
+            <h3>Text Summary</h3>
+            <p>Words:{getWordCount()} Characters:{text.length}</p>
+            
+        </div>
+
+        <div className='container mt-5'>
+            <h3>Preview</h3>
+            <p>{text}</p>
+            
+        </div>
+        </>
     );
 }
