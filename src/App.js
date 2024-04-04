@@ -3,6 +3,12 @@ import { useState } from 'react';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import Alert from './components/Alert';
+import About from './components/About';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
 
 function App() {
 
@@ -24,11 +30,18 @@ function App() {
   }
 
   return (
+    <Router>
     <div className='main-div' style={mode==="light"?lightModeStyle:darkModeStyle}>
       <Navbar mode={mode} handleSwitchOnChange={handleModeToggle}/>
       <Alert/>
-      <TextForm mode={mode}/>
+      
+      <Routes>
+        <Route exact path="/" element={<TextForm mode={mode}/>}/>
+        <Route exact path="/about" element={<About/>}/>
+      </Routes>
+      
     </div>
+    </Router>
   );
 }
 
