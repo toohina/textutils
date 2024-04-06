@@ -13,10 +13,27 @@ import {
 function App() {
 
   const [mode, setMode]=useState("light")
+  const [alert,setAlert]=useState({
+    msg:null,
+    type:null
+  })
+
+  const showAlert=(message,type)=>{
+    setAlert({
+      msg:message,
+      type:type
+    })
+  }
   
   const handleModeToggle=()=>{
-        if(mode==="light")setMode("dark")
-        else setMode("light")
+        if(mode==="light"){
+          setMode("dark")
+          showAlert("Dark mode Acivated","success")
+        }
+        else{ 
+          setMode("light")
+          showAlert("Light mode Activated", "success")
+        }
   }
 
   const lightModeStyle={
@@ -33,7 +50,7 @@ function App() {
     <Router>
     <div className='main-div' style={mode==="light"?lightModeStyle:darkModeStyle}>
       <Navbar mode={mode} handleSwitchOnChange={handleModeToggle}/>
-      <Alert/>
+      <Alert alert={alert}/>
       
       <Routes>
         <Route exact path="/" element={<TextForm mode={mode}/>}/>
