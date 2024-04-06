@@ -4,7 +4,7 @@ export default function TextForm(props){
 
     const getWordCount=()=>{
         let count=0;
-        const textarr=text.split(" ")
+        const textarr=text.split(/\s+/)
         textarr.forEach(element => {
             if(element!=="")count++;
         });
@@ -103,7 +103,7 @@ export default function TextForm(props){
         </div>
         <div className='container mt-5'>
             <h3>Preview</h3>
-            <p>{text.length===0?`Write in the text area to see preview`:text}</p>
+            <p>{text.length===0?`Nothing to preview`:text}</p>
         </div>
         </>
     );
